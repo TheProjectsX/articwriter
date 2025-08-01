@@ -1,0 +1,35 @@
+{
+  "name": "articwriter",
+  "version": "1.0.0",
+  "description": "A block based Article Writer component with Built-in Renderer",
+  "keywords": [
+    "editor",
+    "block",
+    "renderer"
+  ],
+  "homepage": "https://github.com/TheProjectsX/articwriter#readme",
+  "bugs": {
+    "url": "https://github.com/TheProjectsX/articwriter/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheProjectsX/articwriter.git"
+  },
+  "license": "MIT",
+  "author": "TheProjectsX",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "highlight.js": "^11.11.1",
+    "nanoid": "^5.1.5",
+    "postcss": "^8.5.6",
+    "react-dropzone": "^14.3.8",
+    "react-icons": "^5.5.0",
+    "tailwind-scrollbar": "^4.0.2",
+    "tailwindcss": "^4.1.11"
+  }
+}
