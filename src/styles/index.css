@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@source inline(
+  "mb-3", "sm:mb-4",
+  "text-2xl", "sm:text-3xl", "mb-5", "sm:mb-6", "font-bold",
+  "text-xl", "sm:text-2xl", "mb-4", "sm:mb-5", "font-semibold",
+  "text-lg", "sm:text-xl", "mb-3", "sm:mb-4",
+  "text-base", "sm:text-lg", "mb-2", "sm:mb-3", "font-semibold",
+  "text-base", "mb-2", "font-medium",
+  "text-sm", "sm:text-base", "mb-2", "font-medium",
+  "mb-3", "sm:mb-4",
+  "mb-4", "sm:mb-5"
+);
+
+@plugin 'tailwind-scrollbar';
+
+[data-name="block-editor"] [contenteditable] {
+    position: relative;
+}
+
+[data-name="block-editor"] [contenteditable][data-placeholder]:empty::before {
+    position: absolute;
+    content: attr(data-placeholder);
+    color: #aaa;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    left: 0;
+}
+
+/* Center aligned placeholder */
+[data-name="block-editor"]
+    [contenteditable][data-align="center"][data-placeholder]:empty::before {
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Right aligned placeholder */
+[data-name="block-editor"]
+    [contenteditable][data-align="right"][data-placeholder]:empty::before {
+    right: 0;
+    left: auto;
+    transform: translateY(-50%);
+}
+
+[data-name="block-editor"]
+    [contenteditable][data-placeholder][data-align="right"]:empty::before {
+    left: auto;
+    right: 0;
+    transform: translateY(-50%);
+    text-align: right;
+}
+
+.editron__popover-button {
+    width: 100%;
+    padding: 0.625rem 1rem;
+    color: #4a5565;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+/* Dark mode support */
+.dark .editron__popover-button,
+.dark .editron__popover-button * {
+    color: #c8d0db;
+}
+
+.editron__popover-button:hover {
+    background-color: #f3f4f6;
+}
+
+.dark .editron__popover-button:hover {
+    background-color: #313b4b;
+}
+
+/* Set sub and super. cause it does not normally toggle in Chrome */
+sub {
+    vertical-align: sub;
+}
+
+sup {
+    vertical-align: super;
+}
+
+a {
+    color: #016ad3;
+    text-decoration: underline;
+}
