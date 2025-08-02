@@ -5,9 +5,29 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import typescript from "@rollup/plugin-typescript";
 import babel from "@rollup/plugin-babel";
+import nodePolyfills from "rollup-plugin-node-polyfills";
 import packageJson from "./package.json";
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
+
+const plugins = [
+    peerDepsExternal(),
+    nodePolyfills(),
+    resolve(),
+    commonjs(),
+    postcss({
+        inject: true,
+    }),
+    typescript({
+        tsconfig: "./tsconfig.json",
+    }),
+    babel({
+        babelHelpers: "bundled",
+        extensions,
+        exclude: "node_modules/**",
+    }),
+    terser(),
+];
 
 export default [
     {
@@ -26,23 +46,7 @@ export default [
                 exports: "named",
             },
         ],
-        plugins: [
-            peerDepsExternal(),
-            resolve(),
-            commonjs(),
-            postcss({
-                inject: true,
-                minimize: true,
-                sourceMap: true,
-            }),
-            typescript({ tsconfig: "./tsconfig.json" }),
-            babel({
-                babelHelpers: "bundled",
-                extensions,
-                exclude: "node_modules/**",
-            }),
-            terser(),
-        ],
+        plugins,
         external: ["react", "react-dom"],
     },
 
@@ -62,23 +66,7 @@ export default [
                 exports: "named",
             },
         ],
-        plugins: [
-            peerDepsExternal(),
-            resolve(),
-            commonjs(),
-            postcss({
-                inject: true,
-                minimize: true,
-                sourceMap: true,
-            }),
-            typescript({ tsconfig: "./tsconfig.json" }),
-            babel({
-                babelHelpers: "bundled",
-                extensions,
-                exclude: "node_modules/**",
-            }),
-            terser(),
-        ],
+        plugins,
         external: ["react", "react-dom"],
     },
 ];
