@@ -73,8 +73,7 @@ const EditorComponent = forwardRef<
     const wrapperRef = useRef<HTMLDivElement | null>(null);
 
     return (
-        <div data-name="editron-editor" ref={wrapperRef}>
-            <InlineToolbar focusedBlock={focusedBlock} />
+        <div data-name="articwriter-editor" ref={wrapperRef}>
             <div className="relative">
                 <div
                     data-name="editor-blocks-wrapper"
@@ -90,7 +89,7 @@ const EditorComponent = forwardRef<
 
                         return (
                             <BlockViewer
-                            className="pr-[68px]"
+                                className="pr-[68px]"
                                 key={block.id}
                                 Component={currentBlockComponent}
                                 metadata={block}
@@ -118,6 +117,8 @@ const EditorComponent = forwardRef<
                     controllerFocused={controllerFocused}
                     setControllerFocused={setControllerFocused}
                 />
+
+                <InlineToolbar />
             </div>
         </div>
     );

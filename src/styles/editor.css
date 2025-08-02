@@ -1,18 +1,3 @@
-@import "tailwindcss";
-@source inline(
-  "mb-3", "sm:mb-4",
-  "text-2xl", "sm:text-3xl", "mb-5", "sm:mb-6", "font-bold",
-  "text-xl", "sm:text-2xl", "mb-4", "sm:mb-5", "font-semibold",
-  "text-lg", "sm:text-xl", "mb-3", "sm:mb-4",
-  "text-base", "sm:text-lg", "mb-2", "sm:mb-3", "font-semibold",
-  "text-base", "mb-2", "font-medium",
-  "text-sm", "sm:text-base", "mb-2", "font-medium",
-  "mb-3", "sm:mb-4",
-  "mb-4", "sm:mb-5"
-);
-
-@plugin 'tailwind-scrollbar';
-
 [data-name="block-editor"] [contenteditable] {
     position: relative;
 }
@@ -50,7 +35,7 @@
     text-align: right;
 }
 
-.editron__popover-button {
+.articwriter__popover-button {
     width: 100%;
     padding: 0.625rem 1rem;
     color: #4a5565;
@@ -63,29 +48,29 @@
 }
 
 /* Dark mode support */
-.dark .editron__popover-button,
-.dark .editron__popover-button * {
+.dark .articwriter__popover-button,
+.dark .articwriter__popover-button * {
     color: #c8d0db;
 }
 
-.editron__popover-button:hover {
+.articwriter__popover-button:hover {
     background-color: #f3f4f6;
 }
 
-.dark .editron__popover-button:hover {
+.dark .articwriter__popover-button:hover {
     background-color: #313b4b;
 }
 
 /* Set sub and super. cause it does not normally toggle in Chrome */
-sub {
+[data-name="block-editor"] sub {
     vertical-align: sub;
 }
 
-sup {
+[data-name="block-editor"] sup {
     vertical-align: super;
 }
 
-a {
+[data-name="block-editor"] a {
     color: #016ad3;
     text-decoration: underline;
 }
