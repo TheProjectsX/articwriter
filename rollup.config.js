@@ -36,13 +36,11 @@ export default [
             {
                 file: packageJson.exports["./editor"].import,
                 format: "esm",
-                sourcemap: true,
                 exports: "named",
             },
             {
                 file: packageJson.main.replace("editor", "editor-cjs"),
                 format: "cjs",
-                sourcemap: true,
                 exports: "named",
             },
         ],
@@ -56,13 +54,11 @@ export default [
             {
                 file: packageJson.exports["./renderer"].import,
                 format: "esm",
-                sourcemap: true,
                 exports: "named",
             },
             {
                 file: packageJson.main.replace("editor", "renderer-cjs"),
                 format: "cjs",
-                sourcemap: true,
                 exports: "named",
             },
         ],
