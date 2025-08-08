@@ -1,4 +1,4 @@
-import type { OutputBlock } from "../editor-bak/types/blocks";
+import type { OutputDataBlock } from "./register/types";
 import type { AllTypes, EditorBlock, PluginType } from "./register/types";
 
 export type UserConfig = {
