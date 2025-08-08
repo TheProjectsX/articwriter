@@ -29,6 +29,8 @@ const plugins = [
     terser(),
 ];
 
+const external = ["react", "react-dom", "highlight.js"];
+
 export default [
     {
         input: "src/editor/index.jsx",
@@ -45,7 +47,7 @@ export default [
             },
         ],
         plugins,
-        external: ["react", "react-dom"],
+        external,
     },
 
     {
@@ -63,6 +65,6 @@ export default [
             },
         ],
         plugins,
-        external: ["react", "react-dom"],
+        external,
     },
 ];

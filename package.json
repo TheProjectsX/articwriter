@@ -1,6 +1,6 @@
 {
     "name": "articwriter",
-    "version": "1.0.0",
+    "version": "0.0.2",
     "description": "A block based Article Writer component with Built-in Renderer",
     "keywords": [
         "editor",
@@ -41,8 +41,9 @@
         "postbuild": "cp ./src/editor/index.d.ts ./dist/editor/index.d.ts && cp ./src/editor/index.d.ts ./dist/editor-cjs/index.d.ts && cp ./src/renderer/index.d.ts ./dist/renderer/index.d.ts && cp ./src/renderer/index.d.ts ./dist/renderer-cjs/index.d.ts"
     },
     "peerDependencies": {
-        "react": "^18.0.0",
-        "react-dom": "^18.0.0"
+        "react": ">=18.0.0",
+        "react-dom": ">=18.0.0",
+        "highlight.js": "^11.11.1"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.28.0",
@@ -67,7 +68,6 @@
     },
     "dependencies": {
         "@theprojectsx/react-popover": "^1.4.5",
-        "highlight.js": "^11.11.1",
         "nanoid": "^3.3.11",
         "react-icons": "^5.5.0"
     }
