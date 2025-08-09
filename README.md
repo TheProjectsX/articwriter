@@ -138,7 +138,7 @@ return <Component blocks={blocks} />;
 | Code        | `code`                 |
 | Quote       | `quote`                |
 | Image       | `image`                |
-| HTMLPreview | `htmlpreview`          |
+| HTMLPreview | `html-preview`          |
 | Table       | `table`                |
 
 ## 🛠️ Tech Stack

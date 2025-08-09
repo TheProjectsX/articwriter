@@ -1,5 +1,29 @@
 import type { CSSProperties } from "react";
-import type { AllTypes, PluginType } from "./register/types";
+
+type AllTypes =
+    | "heading"
+    | "paragraph"
+    | "list"
+    | "divider"
+    | "code"
+    | "quote"
+    | "image"
+    | "html-preview"
+    | "table";
+
+// Plugin Props
+export type PluginProps = {
+    className: string;
+    style?: Record<string, string>;
+    tag: string;
+    data: Record<string, any>;
+};
+
+// Plugin Type
+export type PluginType = {
+    type: "string";
+    component: React.FC<PluginProps>;
+};
 
 export type UserConfig = Record<
     AllTypes,
