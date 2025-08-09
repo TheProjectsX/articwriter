@@ -11,10 +11,16 @@
 -   🧩 **Custom editor block plugins**
 -   🔧 **Inline tool plugins**
 -   🎨 **Renderer block plugins**
--   💅 **Built-in Tailwind CSS styling**
+-   🎨 **Per-block Style Customization (renderer)**
+-   🌙 **Dark Mode** supported
 -   ⚛️ **Optimized for React projects**
 
 ---
+
+## 🖼️ Preview
+
+Editor and Renderer side by side:
+![Editor & Renderer](./assets/articwriter.jpg)
 
 ## 📦 Installation
 
@@ -27,26 +33,6 @@ npm install articwriter
 # using yarn
 yarn add articwriter
 ```
-
----
-
-## 🔧 Usage
-
-<!-- TODO: Add usage example here -->
-
----
-
-## ⚙️ Configuration
-
-<!-- TODO: Add configuration options here -->
-
----
-
-## 🛠️ Tech Stack
-
--   🧑‍💻 Built with **React** + **Tailwind CSS**
--   🔁 Compatible with all React versions (React 18+ recommended)
--   📦 No external framework dependencies
 
 ---
 
@@ -65,15 +51,107 @@ articwriter/
 
 ---
 
-## 📜 License
+## 🔧 Examples
 
-MIT License
+### Editor
+
+```jsx
+import Editor from "articwriter/editor";
+
+const [Component, save] = Editor({
+    config: {
+        uploadImage: async (file) => {
+            return `file_url.png`;
+        },
+    },
+});
+
+return (
+    <>
+        <Component />
+        <button
+            onClick={async () => {
+                const data = await save();
+                console.log(data);
+            }}
+        >
+            Save
+        </button>
+    </>
+);
+```
+
+### Renderer
+
+```jsx
+import Renderer from "articwriter/renderer";
+
+const [Component] = Renderer({
+    // config
+});
+
+return <Component blocks={blocks} />;
+```
 
 ---
 
-## 👤 Author
+## ⚙️ Configurations
 
-**TheProjectsX**
+### Editor
+
+| Prop         | Type         | Description                                  |
+| ------------ | ------------ | -------------------------------------------- |
+| blocks       | `List`       | Initial blocks data to load in the editor    |
+| defaultBlock | `string`     | Default block type (e.g. `"paragraph"`)      |
+| plugins      | `List`       | Editor plugin which follows the Plugin Rules |
+| config       | `UserConfig` | Config options (see below)                   |
+
+#### `UserConfig`:
+
+| Key         | Type                              | Description                                          |
+| ----------- | --------------------------------- | ---------------------------------------------------- |
+| uploadImage | `(file: File) => Promise<string>` | Async function to upload images, returning image URL |
+
+### Renderer
+
+| Prop    | Type         | Description                                    |
+| ------- | ------------ | ---------------------------------------------- |
+| plugins | `List`       | Renderer plugin which follows the Plugin Rules |
+| config  | `UserConfig` | Config options (see below)                     |
+
+#### `UserConfig`:
+
+| Key       | Type                                                  | Description                                                        |
+| --------- | ----------------------------------------------------- | ------------------------------------------------------------------ |
+| blockName | `{ className?: string; style?: React.CSSProperties }` | Styles for each block type. Use lowercase names (e.g. `paragraph`) |
+
+---
+
+## 🔧 Built-in blocks
+
+| Block Name  | Usage Name (lowercase) |
+| ----------- | ---------------------- |
+| Paragraph   | `paragraph`            |
+| Heading     | `heading`              |
+| List        | `list`                 |
+| Divider     | `divider`              |
+| Code        | `code`                 |
+| Quote       | `quote`                |
+| Image       | `image`                |
+| HTMLPreview | `htmlpreview`          |
+| Table       | `table`                |
+
+## 🛠️ Tech Stack
+
+-   🧑‍💻 Built with **React** + **Tailwind CSS**
+-   🔁 Compatible with all React versions (React 18+ recommended)
+-   📦 No external framework dependencies
+
+---
+
+## 📜 License
+
+MIT License @TheProjectsX
 
 ---
 
