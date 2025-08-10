@@ -1,6 +1,5 @@
 import type { UserConfig } from "../..";
 import type { RegisterReturn } from "../../register";
-import type { AllTypes } from "../../register/types";
 import BlockViewer from "../BlockViewer";
 
 interface RendererComponentProps {
@@ -16,11 +15,11 @@ const RendererComponent = ({
 }: RendererComponentProps) => {
     return (
         <>
-            {blocks.map((block) => {
+             {blocks.map((block: { type: keyof UserConfig; id: string }) => {
                 const currentBlock = registers.find(
                     (register) => register.type === block.type
                 );
-                const currentConfig = config[block.type as AllTypes];
+                const currentConfig = config[block.type];
 
                 if (!currentBlock) return;
 

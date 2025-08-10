@@ -1,6 +1,6 @@
 {
     "name": "articwriter",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "description": "A block based Article Writer component with Built-in Renderer",
     "keywords": [
         "editor",

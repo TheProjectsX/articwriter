@@ -4,6 +4,11 @@
 
 ---
 
+## 🌐 Demo
+Checkout [Demo of articwriter](https://modasser.is-a.dev/articwriter/)
+
+---
+
 ## 🚀 Features
 
 -   🧱 **Block-based article writing**
@@ -138,7 +143,7 @@ return <Component blocks={blocks} />;
 | Code        | `code`                 |
 | Quote       | `quote`                |
 | Image       | `image`                |
-| HTMLPreview | `html-preview`          |
+| HTMLPreview | `html-preview`         |
 | Table       | `table`                |
 
 ## 🛠️ Tech Stack
@@ -152,9 +157,3 @@ return <Component blocks={blocks} />;
 ## 📜 License
 
 MIT License @TheProjectsX
-
----
-
-## 🌐 Demo
-
-🚧 Demo coming soon...
