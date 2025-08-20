@@ -1,5 +1,5 @@
-type ImageTags = "img";
-type ImageData = {
+type data = {
+    tag: "img";
     file: {
         name: string;
         src: string;
@@ -10,12 +10,13 @@ type ImageData = {
 };
 
 export type ImageBlock = {
+    id: string;
     type: "image";
-    tag: ImageTags;
-    data: ImageData;
+    data: data;
 };
 
-export type ImageProps = Omit<ImageBlock, "type"> & {
+export type ImageProps = {
     className?: string;
     style?: Record<string, string>;
+    metadata: ImageBlock;
 };

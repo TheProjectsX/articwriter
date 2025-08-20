@@ -1,16 +1,17 @@
-export type DividerTags = "hr";
-export type DividerData = {
+type data = {
+    tag: "hr";
     text?: string;
     type?: "solid" | "dashed" | "dotted";
 };
 
-export type DividerBlock = {
+type DividerBlock = {
+    id: string;
     type: "divider";
-    tag: DividerTags;
-    data: DividerData;
+    data: data;
 };
 
-export type DividerProps = Omit<DividerBlock, "type"> & {
+export type DividerProps = {
     className?: string;
     style?: Record<string, string>;
+    metadata: DividerBlock;
 };

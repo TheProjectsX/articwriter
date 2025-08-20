@@ -4,7 +4,16 @@
 
 ---
 
+## Version 0.1.0 Changelog:
+
+-   Removed built-in block type dependence
+-   Added Block Based configuration
+-   Added `Flag Section Title as Table of Content` option (**Spacial**)
+-   Plugin usage made easier
+-   TypeCasting made more Editor Friendly
+
 ## 🌐 Demo
+
 Checkout [Demo of articwriter](https://modasser.is-a.dev/articwriter/)
 
 ---
@@ -113,9 +122,11 @@ return <Component blocks={blocks} />;
 
 #### `UserConfig`:
 
-| Key         | Type                              | Description                                          |
-| ----------- | --------------------------------- | ---------------------------------------------------- |
-| uploadImage | `(file: File) => Promise<string>` | Async function to upload images, returning image URL |
+| Key                   | Type                                                           | Description                                          |
+| --------------------- | -------------------------------------------------------------- | ---------------------------------------------------- |
+| uploadImage           | `(file: File) => Promise<string>`                              | Async function to upload images, returning image URL |
+| enableTableOfContents | `boolean`                                                      | Turns on `Flag section title as Table of Content`    |
+| blocks                | `{ [type]: { inlineToolbar?: boolean, defaultTag?: string } }` | Add Block based Configurations                       |
 
 ### Renderer
 
@@ -139,12 +150,12 @@ return <Component blocks={blocks} />;
 | Paragraph   | `paragraph`            |
 | Heading     | `heading`              |
 | List        | `list`                 |
+| Table       | `table`                |
 | Divider     | `divider`              |
 | Code        | `code`                 |
 | Quote       | `quote`                |
 | Image       | `image`                |
 | HTMLPreview | `html-preview`         |
-| Table       | `table`                |
 
 ## 🛠️ Tech Stack
 

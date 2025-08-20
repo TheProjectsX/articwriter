@@ -15,6 +15,7 @@ import Controls from "../controls";
 import InlineToolbar from "../InlineToolbar";
 
 import {
+    genDemo,
     getFromRegister,
     handleArrowKeyDown,
     processExport,
@@ -26,8 +27,14 @@ const EditorComponent = forwardRef<
     EditorComponentSaveHandle,
     EditorComponentProps
 >(({ values = [], defaultBlock = "paragraph", registers, config }, ref) => {
-    const defaultDemo = (getFromRegister(registers, defaultBlock, "demo") ??
-        getFromRegister(registers, "paragraph", "demo")) as EditorBlock;
+    const defaultDemo = genDemo(
+        (getFromRegister(registers, defaultBlock, "structure") ??
+            getFromRegister(
+                registers,
+                "paragraph",
+                "structure"
+            )) as BlockStructure
+    ) as EditorBlock;
 
     const [blocks, dispatch] = useBlockForge(
         values.length === 0 ? [defaultDemo] : values
@@ -81,18 +88,28 @@ const EditorComponent = forwardRef<
                     className="dark:text-gray-100"
                 >
                     {blocks.map((block) => {
-                        const currentBlockComponent = getFromRegister(
+                        const Component = getFromRegister(
                             registers,
                             block.type,
                             "component"
                         ) as BlockElement;
+                        const config = getFromRegister(
+                            registers,
+                            block.type,
+                            "config"
+                        ) as BlockElement;
+
+                        const metadata = {
+                            config,
+                            ...block,
+                        };
 
                         return (
                             <BlockViewer
                                 className="pr-[68px]"
                                 key={block.id}
-                                Component={currentBlockComponent}
-                                metadata={block}
+                                Component={Component}
+                                metadata={metadata}
                                 dispatch={dispatch}
                                 controllerFocused={controllerFocused}
                                 setFocusedBlock={setFocusedBlock}
@@ -118,7 +135,9 @@ const EditorComponent = forwardRef<
                     setControllerFocused={setControllerFocused}
                 />
 
-                <InlineToolbar />
+                <InlineToolbar
+                    config={recordFromRegister(registers, "config")}
+                />
             </div>
         </div>
     );

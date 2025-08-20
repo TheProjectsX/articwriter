@@ -1,16 +1,17 @@
-type ParagraphTags = "p";
-type ParagraphData = {
+type data = {
+    tag: "p";
     html: string;
     style?: Record<string, string>;
 };
 
 export type ParagraphBlock = {
+    id: string;
     type: "paragraph";
-    tag: ParagraphTags;
-    data: ParagraphData;
+    data: data;
 };
 
-export type ParagraphProps = Omit<ParagraphBlock, "type"> & {
+export type ParagraphProps = {
     className?: string;
     style?: Record<string, string>;
+    metadata: ParagraphBlock;
 };

@@ -1,17 +1,18 @@
-type TableTags = "table";
-type TableData = {
+type data = {
+    tag: "table";
     headers?: string[];
     body: string[][];
     style?: Record<string, string>;
 };
 
 export type TableBlock = {
+    id: string;
     type: "table";
-    tag: TableTags;
-    data: TableData;
+    data: data;
 };
 
-export type TableProps = Omit<TableBlock, "type"> & {
+export type TableProps = {
     className?: string;
     style?: Record<string, string>;
+    metadata: TableBlock;
 };

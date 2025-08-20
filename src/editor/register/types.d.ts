@@ -1,5 +1,7 @@
 import type { IconType } from "react-icons";
 
+/*
+// ---------------------------------- NOT USING ---------------------------------- //
 import type { ParagraphBlock } from "../components/blockElements/Paragraph/types";
 import type { HeadingBlock } from "../components/blockElements/Heading/types";
 import type { ListBlock } from "../components/blockElements/List/types";
@@ -23,34 +25,38 @@ type AllBlocks =
     | HTMLPreviewBlock
     | TableBlock;
 
+// All Tags
+type AllTags = AllBlocks["data"]["tag"];
+
+// All Types
+type AllTypes = AllBlocks["type"];
+
+// All Data
+type AllData = AllBlocks["data"];
+
+
 // Editor Block
 export type EditorBlock = {
     id: string;
-} & Omit<AllBlocks, "output">;
+    type: string;
+    config?: Record<string, any>;
+    data: { tag: string } & Record<string, any>;
+};
 
-// Output Data Block
-export type OutputDataBlock = {
-    id: string;
-} & Omit<AllBlocks, "data" | "output"> & {
-        data: AllBlocks["output"];
-    };
-
-// All Tags
-export type AllTags = AllBlocks["tag"];
-
-// All Types
-export type AllTypes = AllBlocks["type"];
-
-// All Data
-export type AllData = AllBlocks["data"];
+// Structure Tag Type
+type SubTag = {
+    name: string;
+    tag: string;
+    icon: IconType;
+};
 
 // Block Structure
 export type BlockStructure = {
     name: string;
     icon: IconType;
     type: string;
-    tags: string | SubTags[];
-    data: AllData;
+    tags: string | SubTag[];
+    data: { tag: string } & Record<string, any>;
 };
 
 // Settings Structure
@@ -67,29 +73,40 @@ export type SettingsStructure = {
 
 // Plugin Structure
 export type PluginStructure = Omit<BlockStructure, "data"> & {
-    data: Record<string, any>;
-};
-
-// Plugin Demo
-export type PluginDemo = {
-    type: string;
-    tag: string;
-    data: Record<string, any>;
+    data: { tag: string } & Record<string, any>;
 };
 
 // Plugin Props
 export type PluginProps = {
     className?: string;
-    tag?: string;
-    data: Record<string, any>;
-    onUpdate: (value: any) => void;
+    data: { tag: string } & Record<string, any>;
+    onUpdate: (value: Record<string, any>) => void;
 };
 
 // Plugin type
 export type PluginType = {
     component: React.FC<PluginProps>;
     structure: PluginStructure;
-    demo: PluginDemo;
     settings?: SettingsStructure[];
     processor?: (block: Record<string, any>) => Promise<Record<string, any>>;
+};
+// ---------------------------------- NOT USING ---------------------------------- //
+*/
+
+import {
+    EditorBlock,
+    BlockStructure,
+    SettingsStructure,
+    PluginProps,
+    PluginStructure,
+    PluginType,
+} from "..";
+
+export {
+    EditorBlock,
+    BlockStructure,
+    SettingsStructure,
+    PluginProps,
+    PluginStructure,
+    PluginType,
 };

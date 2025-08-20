@@ -1,5 +1,5 @@
-export type QuoteTags = "blockquote";
-export type QuoteData = {
+type data = {
+    tag: "blockquote";
     quote: string;
     author: string;
     type?: "plain" | "highlighted";
@@ -7,12 +7,13 @@ export type QuoteData = {
 };
 
 export type QuoteBlock = {
+    id: string;
     type: "quote";
-    tag: QuoteTags;
-    data: QuoteData;
+    data: data;
 };
 
-export type QuoteProps = Omit<QuoteBlock, "type"> & {
+export type QuoteProps = {
     className?: string;
     style?: Record<string, string>;
+    metadata: QuoteBlock;
 };

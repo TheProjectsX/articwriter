@@ -1,6 +1,6 @@
 {
     "name": "articwriter",
-    "version": "0.0.5",
+    "version": "0.1.1",
     "description": "A block based Article Writer component with Built-in Renderer",
     "keywords": [
         "editor",
@@ -38,12 +38,14 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "prebuild": "npx @tailwindcss/cli -i ./src/styles/tailwind.css -o ./src/styles/index.css && rm -rf dist",
         "build": "rollup -c --bundleConfigAsCjs",
-        "postbuild": "cp ./src/editor/index.d.ts ./dist/editor/index.d.ts && cp ./src/editor/index.d.ts ./dist/editor-cjs/index.d.ts && cp ./src/renderer/index.d.ts ./dist/renderer/index.d.ts && cp ./src/renderer/index.d.ts ./dist/renderer-cjs/index.d.ts"
+        "postbuild": "cp ./src/editor/index.d.ts ./dist/editor/index.d.ts && cp ./src/editor/index.d.ts ./dist/editor-cjs/index.d.ts && cp ./src/renderer/index.d.ts ./dist/renderer/index.d.ts && cp ./src/renderer/index.d.ts ./dist/renderer-cjs/index.d.ts",
+        "predeploy": "cd example && npm run build",
+        "deploy": "gh-pages -d example/dist"
     },
     "peerDependencies": {
+        "highlight.js": "^11.11.1",
         "react": ">=18.0.0",
-        "react-dom": ">=18.0.0",
-        "highlight.js": "^11.11.1"
+        "react-dom": ">=18.0.0"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.28.0",

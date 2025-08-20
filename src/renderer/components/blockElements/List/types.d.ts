@@ -1,5 +1,5 @@
-export type ListTags = "ul" | "ol";
-export type ListData = {
+type data = {
+    tag: "ul" | "ol";
     values: {
         html: string;
     }[];
@@ -7,12 +7,13 @@ export type ListData = {
 };
 
 export type ListBlock = {
+    id: string;
     type: "list";
-    tag: ListTags;
-    data: ListData;
+    data: data;
 };
 
-export type ListProps = Omit<ListBlock, "type"> & {
+export type ListProps = {
     className?: string;
     style?: Record<string, string>;
+    metadata: ListBlock;
 };

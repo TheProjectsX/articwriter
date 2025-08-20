@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { DividerProps } from "./types";
-import { demo, settings, structure } from "./meta";
+import { settings, structure } from "./meta";
 
 const Divider = ({ data, onUpdate }: DividerProps) => {
     const [dividerText, setDividerText] = useState<string | undefined>(
@@ -10,7 +10,11 @@ const Divider = ({ data, onUpdate }: DividerProps) => {
     useEffect(() => {
         if (dividerText === "") return;
 
-        onUpdate(dividerText ? { ...data, text: dividerText } : {});
+        onUpdate(
+            dividerText
+                ? { ...data, text: dividerText }
+                : (({ text, ...rest }) => rest)(data)
+        );
     }, [dividerText]);
 
     return (
@@ -61,6 +65,5 @@ const Divider = ({ data, onUpdate }: DividerProps) => {
 export default {
     component: Divider,
     structure,
-    demo,
     settings,
 };
