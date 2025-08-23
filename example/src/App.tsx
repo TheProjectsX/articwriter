@@ -17,7 +17,7 @@ export type blockState = {
 const App = () => {
     const [mode, setMode] = useState<"editor" | "renderer">("editor");
 
-    const [data, setData] = useState<blockState>(demo);
+    const [data, setData] = useState<blockState>({ blocks: [] });
     return (
         <div className="w-full flex flex-col items-center">
             <div className="flex items-center gap-4 mb-10 max-w-3xl w-full">
